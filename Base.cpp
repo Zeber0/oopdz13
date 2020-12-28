@@ -1,18 +1,18 @@
 #include "Base.h"
 
 Base::Base()
-{ 
-	x =new int(0);
+{
+	*x = int(rand() % 100);
 }
 
 Base::Base(int in)
 {
-	x = new int(in);
+	*x = int(in);
 }
 
 Base::Base(const Base& obj)
 {
-	x = new int(*obj.x);
+	*x = int(*obj.x);
 }
 
 void Base::getx()

@@ -8,7 +8,7 @@
 class Base
 {
 public:
-	int* x;
+	int* x= new int;
 	Base();
 	Base(int in);
 	Base(const Base& obj);

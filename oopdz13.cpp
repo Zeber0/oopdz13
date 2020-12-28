@@ -8,7 +8,7 @@ int main()
 	{
 		srand(time(NULL));
 		DB db1, db2, db3;
-		for (int i = 0; i < 1 + rand() % 20; i++) {
+		for (int i = 0; i < 1 + rand() % 10; i++) {
 			db1.add(new Base(1+rand() % 100));
 			db1.add(new Derived(1+rand() % 100));
 		}
