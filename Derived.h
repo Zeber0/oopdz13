@@ -9,7 +9,6 @@ public:
 	Derived(const Derived& obj);
 	void copybase(const DB& db) override;
 	void copyder(const DB& db) override;
-	Base* ret() override;
 	void gety();
 	~Derived();
 };

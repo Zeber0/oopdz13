@@ -30,7 +30,7 @@ void DB::copy(const DB& d, bool sw)
 		for (; i != ie; ++i)
 		{
 			Base* t = *i;
-			db.insert(t->copyder());
+			t->copyder(d);
 		}
 	}
 }
@@ -39,7 +39,7 @@ void DB::copy(const DB& d, bool sw)
 
 void DB::print()
 {
-	//std::copy(db.begin(), db.end(), std::ostream_iterator<int>(std::cout, " ")); как мне с помощью копи доставать аргументы класса?
+	//std::copy(db.begin(), db.end(), std::ostream_iterator<int>(std::cout, " ")); можно ли с помощью копи доставать аргументы класса?
 	for (std::set<Base*, predicate>::iterator i = db.begin(); i != db.end(); ++i) 
 	{ 
 		(*i)->getx();
@@ -70,6 +70,7 @@ void DBMAP::copydb(const DB& d)
 	for (std::set<Base*, predicate>::iterator i = d.db.begin(); i != d.db.end(); ++i)
 	{
 		Base* t = *i;
+		//сломалось в процессе переделки
 		map.insert(std::pair<int*, Base*>(t->ret()->x, t));
 	}
 }

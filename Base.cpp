@@ -1,4 +1,4 @@
-#include "Base.h"
+﻿#include "Base.h"
 
 Base::Base()
 {
@@ -24,16 +24,12 @@ void Base::gety()
 {
 }
 
-Base* Base::ret()
-{
-	
-}
 
 
 
 
 
-
+//он не знает как всунуть в дб
 void Base::copybase(const DB& db)
 {
 	db.add(new Base(*this));

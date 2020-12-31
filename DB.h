@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Derived.h"
 struct predicate
 {
@@ -15,6 +15,11 @@ public:
 	void copy(const DB& db,		bool sw);
 	void print();
 	friend class DBMAP;
+	/*
+	это так-же не приносит результата
+	friend class Base;
+	friend class Derived;
+	*/
 	~DB();
 };
 class DBMAP 

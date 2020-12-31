@@ -1,4 +1,4 @@
-#include "Derived.h"
+﻿#include "Derived.h"
 
 Derived::Derived()
 {
@@ -21,16 +21,13 @@ void Derived::copybase(const DB& db)
 }
 
 
-
+//тут соответственно тоже
 void Derived::copyder(const DB& db)
 {
 	db.add(new Derived(*this));
 }
 
-Base* Derived::ret()
-{
-	return copyder();
-}
+
 
 void Derived::gety()
 {
