@@ -16,14 +16,20 @@ Derived::Derived(const Derived& obj)
 	*x =  int(*obj.x);
 }
 
+void Derived::copybase(const DB& db)
+{
+}
+
+
+
+void Derived::copyder(const DB& db)
+{
+	db.add(new Derived(*this));
+}
+
 Base* Derived::ret()
 {
 	return copyder();
-}
-
-Base* Derived::copyder()
-{
-	return new Derived(*this);
 }
 
 void Derived::gety()

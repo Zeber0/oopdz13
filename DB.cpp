@@ -6,7 +6,10 @@ DB::DB()
 
 void DB::add(Base* obj)
 {
-	db.insert(obj);
+	std::pair<std::set <Base*, predicate>::iterator, bool> a;
+	Base* in = obj;
+	a = db.insert(in);
+	if (a.second == false) delete in;
 }
 
 void DB::copy(const DB& d, bool sw)
@@ -18,8 +21,7 @@ void DB::copy(const DB& d, bool sw)
 		for (; i != ie; ++i)
 		{
 			Base* t = *i;
-			if(typeid(*t).name()== typeid(Base).name())
-			db.insert(t->ret());
+			t->copybase(d);
 		}
 	}
 	else {
@@ -28,11 +30,12 @@ void DB::copy(const DB& d, bool sw)
 		for (; i != ie; ++i)
 		{
 			Base* t = *i;
-			if (typeid(*t).name() == typeid(Derived).name())
-			db.insert(t->ret());
+			db.insert(t->copyder());
 		}
 	}
 }
+
+
 
 void DB::print()
 {
@@ -56,4 +59,21 @@ DB::~DB()
 bool predicate::operator()(Base* a, Base* b) const
 {
 	return *(a->x) < *(b->x);
+}
+
+DBMAP::DBMAP()
+{
+}
+
+void DBMAP::copydb(const DB& d)
+{
+	for (std::set<Base*, predicate>::iterator i = d.db.begin(); i != d.db.end(); ++i)
+	{
+		Base* t = *i;
+		map.insert(std::pair<int*, Base*>(t->ret()->x, t));
+	}
+}
+
+DBMAP::~DBMAP()
+{
 }

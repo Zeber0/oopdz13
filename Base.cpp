@@ -2,7 +2,7 @@
 
 Base::Base()
 {
-	*x = int(rand() % 100);
+	*x = int(1+rand() % 100);
 }
 
 Base::Base(int in)
@@ -24,18 +24,24 @@ void Base::gety()
 {
 }
 
-
-
-
-
 Base* Base::ret()
 {
-	return copybase();
+	
 }
 
-Base* Base::copybase()
+
+
+
+
+
+void Base::copybase(const DB& db)
 {
-	return new Base(*this);
+	db.add(new Base(*this));
+}
+
+void Base::copyder(const DB& db)
+{
+	
 }
 
 Base::~Base()
