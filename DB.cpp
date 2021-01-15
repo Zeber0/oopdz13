@@ -104,11 +104,15 @@ void DBMAP::copydb(const DB& d)
 {
 	for (std::set<Base*, predicate>::iterator i = d.db.begin(); i != d.db.end(); ++i)
 	{
-		Base* t = *i;
-		map.insert(std::pair<int*, Base*>(t->x, t->copy()));
+		map.insert(std::pair<int*, Base*>((*i)->x, (*i)->copy()));
 	}
 }
 
+
 DBMAP::~DBMAP()
 {
+	for (std::multimap<int*, Base*>::iterator i = map.begin(); i != map.end(); ++i) {
+		delete i->second;
+	}
+	map.clear();
 }
