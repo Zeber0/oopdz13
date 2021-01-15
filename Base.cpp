@@ -42,7 +42,7 @@ void Base::copyder(DB& db)
 
 Base* Base::copy()
 {
-	return this;
+	return new Base(*this);
 }
 
 Base::~Base()
