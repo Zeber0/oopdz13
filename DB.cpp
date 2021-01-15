@@ -4,6 +4,41 @@ DB::DB()
 {
 }
 
+DB::DB(const DB& a)
+{
+	if (this->db.size() != 0)
+	{
+		while (this->db.size() != 0)
+			this->db.erase(this->db.begin());
+	}
+	std::set<Base*, predicate>::iterator i = a.db.begin(), ie = a.db.end();
+	for (; i != ie; ++i)
+	{
+		this->add(*i);
+	}
+}
+
+DB& DB::operator=(const DB& a)
+{
+	if (this == &a)
+	{
+		return *this;
+	}
+	if (this->db.size() != 0)
+	{
+		while (this->db.size() != 0)
+			this->db.erase(this->db.begin());
+	}
+	std::set<Base*, predicate>::iterator i = a.db.begin(), ie = a.db.end();
+	for (; i != ie; ++i)
+	{
+		this->add(*i);
+	}
+	return *this;
+}
+
+
+
 void DB::add(Base* obj)
 {
 	std::pair<std::set <Base*, predicate>::iterator, bool> a;
@@ -12,7 +47,7 @@ void DB::add(Base* obj)
 	if (a.second == false) delete in;
 }
 
-void DB::copy(const DB& d, bool sw)
+void DB::copy(DB& d, bool sw)
 {
 	
 	if (sw == 0) {
@@ -21,7 +56,7 @@ void DB::copy(const DB& d, bool sw)
 		for (; i != ie; ++i)
 		{
 			Base* t = *i;
-			t->copybase(d);
+			t->copybase(*this);
 		}
 	}
 	else {
@@ -30,7 +65,7 @@ void DB::copy(const DB& d, bool sw)
 		for (; i != ie; ++i)
 		{
 			Base* t = *i;
-			t->copyder(d);
+			t->copyder(*this);
 		}
 	}
 }
@@ -70,8 +105,7 @@ void DBMAP::copydb(const DB& d)
 	for (std::set<Base*, predicate>::iterator i = d.db.begin(); i != d.db.end(); ++i)
 	{
 		Base* t = *i;
-		//сломалось в процессе переделки
-		map.insert(std::pair<int*, Base*>(t->ret()->x, t));
+		map.insert(std::pair<int*, Base*>(t->x, t->copy()));
 	}
 }
 

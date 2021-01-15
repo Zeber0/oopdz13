@@ -1,5 +1,8 @@
 ﻿#pragma once
 #include "Derived.h"
+#include <set>
+#include <iterator>
+#include <map>
 struct predicate
 {
 	bool operator()(Base* a, Base* b) const;
@@ -11,15 +14,12 @@ private:
 	std::set <Base*, predicate> db;
 public:
 	DB();
+	DB& operator =(const DB& a);
+	DB(const DB&);
 	void add(Base* obj);
-	void copy(const DB& db,		bool sw);
+	void copy(DB& db,		bool sw);
 	void print();
 	friend class DBMAP;
-	/*
-	это так-же не приносит результата
-	friend class Base;
-	friend class Derived;
-	*/
 	~DB();
 };
 class DBMAP 

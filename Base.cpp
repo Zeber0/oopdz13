@@ -1,4 +1,4 @@
-﻿#include "Base.h"
+﻿#include "DB.h"
 
 Base::Base()
 {
@@ -29,15 +29,20 @@ void Base::gety()
 
 
 
-//он не знает как всунуть в дб
-void Base::copybase(const DB& db)
+
+void Base::copybase(DB& db)
 {
 	db.add(new Base(*this));
 }
 
-void Base::copyder(const DB& db)
+void Base::copyder(DB& db)
 {
 	
+}
+
+Base* Base::copy()
+{
+	return this;
 }
 
 Base::~Base()

@@ -1,4 +1,4 @@
-﻿#include "Derived.h"
+﻿#include "DB.h"
 
 Derived::Derived()
 {
@@ -16,16 +16,17 @@ Derived::Derived(const Derived& obj)
 	*x =  int(*obj.x);
 }
 
-void Derived::copybase(const DB& db)
+void Derived::copybase(DB& db)
 {
 }
 
 
-//тут соответственно тоже
-void Derived::copyder(const DB& db)
+void Derived::copyder(DB& db)
 {
 	db.add(new Derived(*this));
 }
+
+
 
 
 

@@ -148,6 +148,7 @@
     <ClInclude Include="Base.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="Derived.h" />
+    <ClInclude Include="Linker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

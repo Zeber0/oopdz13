@@ -4,11 +4,11 @@ class Derived : public Base
 {
 public:
 	int y;
-	Derived(); 
+	Derived();
 	Derived(int in);
 	Derived(const Derived& obj);
-	void copybase(const DB& db) override;
-	void copyder(const DB& db) override;
+	void copybase(DB& db) override;
+	void copyder(DB& db) override;
 	void gety();
 	~Derived();
 };
