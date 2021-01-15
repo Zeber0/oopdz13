@@ -13,6 +13,6 @@ public:
 	virtual void gety();
 	virtual void copybase(DB& db);
 	virtual void copyder(DB& db);
-	Base* copy();
+	virtual Base* copy();
 	virtual ~Base();
 };

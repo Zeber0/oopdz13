@@ -42,8 +42,10 @@ void Base::copyder(DB& db)
 
 Base* Base::copy()
 {
-	return new Base(*this);
+	return nullptr;
 }
+
+
 
 Base::~Base()
 {

@@ -26,6 +26,11 @@ void Derived::copyder(DB& db)
 	db.add(new Derived(*this));
 }
 
+Base* Derived::copy()
+{
+	return new Derived(*this);
+}
+
 
 
 
